@@ -22,6 +22,7 @@ Partial Class frmCodeChallenge
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCodeChallenge))
         pbSplash = New PictureBox()
         bg1 = New ComponentModel.BackgroundWorker()
         pnlTop = New Panel()
@@ -56,6 +57,7 @@ Partial Class frmCodeChallenge
         ' 
         ' pnlTop
         ' 
+        pnlTop.BackColor = Color.White
         pnlTop.Controls.Add(Label2)
         pnlTop.Controls.Add(btnChooseFile)
         pnlTop.Controls.Add(txtCSVFile)
@@ -64,7 +66,7 @@ Partial Class frmCodeChallenge
         pnlTop.Location = New Point(0, 0)
         pnlTop.Margin = New Padding(3, 4, 3, 4)
         pnlTop.Name = "pnlTop"
-        pnlTop.Size = New Size(686, 133)
+        pnlTop.Size = New Size(686, 104)
         pnlTop.TabIndex = 1
         pnlTop.Visible = False
         ' 
@@ -72,6 +74,7 @@ Partial Class frmCodeChallenge
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.FromArgb(CByte(0), CByte(108), CByte(255))
         Label2.Location = New Point(124, 2)
         Label2.Name = "Label2"
         Label2.Size = New Size(189, 37)
@@ -100,9 +103,10 @@ Partial Class frmCodeChallenge
         ' Label1
         ' 
         Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(8, 55)
         Label1.Name = "Label1"
-        Label1.Size = New Size(110, 20)
+        Label1.Size = New Size(116, 20)
         Label1.TabIndex = 0
         Label1.Text = "Select your file:"
         ' 
@@ -142,9 +146,9 @@ Partial Class frmCodeChallenge
         lstResults.Dock = DockStyle.Fill
         lstResults.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lstResults.FullRowSelect = True
-        lstResults.Location = New Point(0, 133)
+        lstResults.Location = New Point(0, 104)
         lstResults.Name = "lstResults"
-        lstResults.Size = New Size(686, 387)
+        lstResults.Size = New Size(686, 416)
         lstResults.TabIndex = 4
         lstResults.UseCompatibleStateImageBehavior = False
         lstResults.View = View.Details
@@ -160,6 +164,7 @@ Partial Class frmCodeChallenge
         Controls.Add(pbSplash)
         Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         FormBorderStyle = FormBorderStyle.FixedSingle
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(3, 4, 3, 4)
         Name = "frmCodeChallenge"
         Opacity = 0R

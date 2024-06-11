@@ -1,4 +1,6 @@
-﻿Imports System.ComponentModel
+﻿#Region "Imports"
+Imports System.ComponentModel
+#End Region
 
 Public Class frmCodeChallenge
 
@@ -11,7 +13,7 @@ Public Class frmCodeChallenge
         pbSplash.BringToFront()
         Me.FormBorderStyle = FormBorderStyle.None : Me.Width = 700 : Me.Height = 150
         For FadeIn As Integer = 0 To 100 Step 10
-            Me.Opacity = FadeIn / 100 : Me.Refresh() : Threading.Thread.Sleep(80)
+            Me.Opacity = FadeIn / 100 : Me.Refresh() : Threading.Thread.Sleep(90)
         Next
         pbSplash.SendToBack() : pbSplash.Visible = False : Me.FormBorderStyle = FormBorderStyle.FixedSingle : Me.Width = 700 : Me.Height = 700 : pnlTop.Visible = True
     End Sub
@@ -166,18 +168,18 @@ Public Class frmCodeChallenge
         Dim lsFinal As New ListViewItem With {.Text = ""}
         lsFinal.SubItems.Add("") : lsFinal.SubItems.Add("") : lsFinal.SubItems.Add(iCount.ToString) : lsFinal.SubItems.Add(CDec(iTotal).ToString("C"))
         lstResults.Items.Add(lsFinal)
-
+        SetAlternateColor()
         lstResults.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
     End Sub
 
-    Private Sub lstResults_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles lstResults.DrawItem
-        If e.ItemIndex Mod 2 = 0 Then  ' Even rows
-            e.DrawDefault = True  ' Draw default item content
-            e.Item.BackColor = Color.FromArgb(230, 230, 255)  ' Light blue for even rows
-        Else  ' Odd rows
-            e.DrawDefault = True
-            e.Item.BackColor = Color.FromArgb(219, 237, 252)  ' Light gray for odd rows
-        End If
+    Private Sub SetAlternateColor()
+        For j = 0 To lstResults.Items.Count - 1
+            If (j Mod 2) = 0 Then
+                lstResults.Items(j).BackColor = Color.AliceBlue
+            Else
+                lstResults.Items(j).BackColor = Color.White
+            End If
+        Next
     End Sub
 
 #End Region
