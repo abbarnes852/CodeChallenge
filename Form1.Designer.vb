@@ -144,7 +144,7 @@ Partial Class frmCodeChallenge
         ' 
         lstResults.BackColor = Color.AliceBlue
         lstResults.Dock = DockStyle.Fill
-        lstResults.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lstResults.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lstResults.FullRowSelect = True
         lstResults.Location = New Point(0, 104)
         lstResults.Name = "lstResults"

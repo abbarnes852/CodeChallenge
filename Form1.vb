@@ -4,7 +4,7 @@ Imports System.ComponentModel
 
 Public Class frmCodeChallenge
 
-#Region "Loading/Closing"
+#Region "Loading"
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         FadeIn()
     End Sub
@@ -13,16 +13,11 @@ Public Class frmCodeChallenge
         pbSplash.BringToFront()
         Me.FormBorderStyle = FormBorderStyle.None : Me.Width = 700 : Me.Height = 150
         For FadeIn As Integer = 0 To 100 Step 10
-            Me.Opacity = FadeIn / 100 : Me.Refresh() : Threading.Thread.Sleep(90)
+            Me.Opacity = FadeIn / 100 : Me.Refresh() : Threading.Thread.Sleep(130)
         Next
-        pbSplash.SendToBack() : pbSplash.Visible = False : Me.FormBorderStyle = FormBorderStyle.FixedSingle : Me.Width = 700 : Me.Height = 700 : pnlTop.Visible = True
+        pbSplash.SendToBack() : pbSplash.Visible = False : Me.FormBorderStyle = FormBorderStyle.Sizable : Me.Width = 700 : Me.Height = 700 : pnlTop.Visible = True
     End Sub
 
-    Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        For FadeOut As Int16 = 100 To 0 Step -10
-            Me.Opacity = FadeOut / 100 : Me.Refresh() : Threading.Thread.Sleep(70)
-        Next
-    End Sub
 #End Region
 
 #Region "Choose Directory"
@@ -125,14 +120,15 @@ Public Class frmCodeChallenge
     End Sub
 
     Private Sub bg1_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles bg1.ProgressChanged
-        If e.ProgressPercentage = 1 Then
-            lstResults.Columns.Add("Item") 'Add a column at the end for results
+        If e.ProgressPercentage = 1 Then 'This is setting up columns
+            lstResults.Columns.Add("Item") 'Add a column at the beginning for a better count
+
             For Each rw As String In e.UserState
                 lstResults.Columns.Add(rw.ToString) 'Add all excel columns to columns in our listview
             Next
             lstResults.Columns.Add("Results") 'Add a column at the end for results
         Else
-            lblStatus.Text = "Processing row# " + e.ProgressPercentage.ToString
+            lblStatus.Text = "Processing row# " + e.ProgressPercentage.ToString 'Add the item to the list
             lstResults.Items.Add(e.UserState)
         End If
     End Sub
@@ -178,6 +174,7 @@ Public Class frmCodeChallenge
                 lstResults.Items(j).BackColor = Color.AliceBlue
             Else
                 lstResults.Items(j).BackColor = Color.White
+
             End If
         Next
     End Sub
