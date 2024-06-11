@@ -15,6 +15,7 @@ Public Class frmCodeChallenge
         For FadeIn As Integer = 0 To 100 Step 10
             Me.Opacity = FadeIn / 100 : Me.Refresh() : Threading.Thread.Sleep(130)
         Next
+
         pbSplash.SendToBack() : pbSplash.Visible = False : Me.FormBorderStyle = FormBorderStyle.Sizable : Me.Width = 700 : Me.Height = 700 : pnlTop.Visible = True
     End Sub
 
